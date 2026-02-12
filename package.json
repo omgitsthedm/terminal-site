@@ -13,6 +13,8 @@
     "lint": "npm run lint:js && npm run lint:css && npm run lint:html",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "test:visual": "playwright test",
+    "test:visual:update": "playwright test --update-snapshots",
     "test:lighthouse": "echo \"Lighthouse runs in GitHub Actions workflow\""
   },
   "repository": {
@@ -30,11 +32,15 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@netlify/plugin-sitemap": "^0.8.1",
+    "@playwright/test": "^1.58.2",
     "eslint": "^10.0.0",
     "globals": "^17.3.0",
     "htmlhint": "^1.9.1",
     "prettier": "^3.8.1",
     "stylelint": "^17.2.0",
     "stylelint-config-standard": "^40.0.0"
+  },
+  "dependencies": {
+    "three": "^0.182.0"
   }
 }

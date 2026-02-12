@@ -1,2 +1,5 @@
 node_modules
 .netlify
+test-results
+playwright-report
+assets/vendor/three
