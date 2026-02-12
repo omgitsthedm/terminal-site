@@ -10,7 +10,12 @@ renderer.setSize(root.clientWidth, root.clientHeight);
 root.appendChild(renderer.domElement);
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(55, root.clientWidth / root.clientHeight, 0.1, 300);
+const camera = new THREE.PerspectiveCamera(
+  55,
+  root.clientWidth / root.clientHeight,
+  0.1,
+  300,
+);
 camera.position.set(22, 16, 24);
 
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -20,8 +25,15 @@ controls.target.set(0, 10, 0);
 function createBuildingFromSpec(spec) {
   const group = new THREE.Group();
 
-  const groundGeo = new THREE.BoxGeometry(spec.ground.width, spec.ground.height, spec.ground.depth);
-  const groundMat = new THREE.MeshStandardMaterial({ color: 0x1f2937, roughness: 0.9 });
+  const groundGeo = new THREE.BoxGeometry(
+    spec.ground.width,
+    spec.ground.height,
+    spec.ground.depth,
+  );
+  const groundMat = new THREE.MeshStandardMaterial({
+    color: 0x1f2937,
+    roughness: 0.9,
+  });
   const ground = new THREE.Mesh(groundGeo, groundMat);
   ground.position.y = spec.ground.height / 2;
   group.add(ground);
@@ -31,8 +43,18 @@ function createBuildingFromSpec(spec) {
   let width = b.width;
   let depth = b.depth;
 
-  const wallMat = new THREE.MeshStandardMaterial({ color: b.wallColor, roughness: 0.35, metalness: 0.1 });
-  const glassMat = new THREE.MeshStandardMaterial({ color: b.glassColor, emissive: b.glassColor, emissiveIntensity: 0.16, roughness: 0.18, metalness: 0.3 });
+  const wallMat = new THREE.MeshStandardMaterial({
+    color: b.wallColor,
+    roughness: 0.35,
+    metalness: 0.1,
+  });
+  const glassMat = new THREE.MeshStandardMaterial({
+    color: b.glassColor,
+    emissive: b.glassColor,
+    emissiveIntensity: 0.16,
+    roughness: 0.18,
+    metalness: 0.3,
+  });
 
   for (let floor = 0; floor < b.floors; floor += 1) {
     if (floor > 0 && floor % b.setbackEvery === 0) {
@@ -85,7 +107,10 @@ function createBuildingFromSpec(spec) {
   }
 
   const roofGeo = new THREE.BoxGeometry(width + 0.3, 0.35, depth + 0.3);
-  const roofMat = new THREE.MeshStandardMaterial({ color: b.roofColor, roughness: 0.55 });
+  const roofMat = new THREE.MeshStandardMaterial({
+    color: b.roofColor,
+    roughness: 0.55,
+  });
   const roof = new THREE.Mesh(roofGeo, roofMat);
   roof.position.y = spec.ground.height + b.floors * b.floorHeight + 0.2;
   group.add(roof);

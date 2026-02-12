@@ -33,7 +33,5 @@
     "pkief.material-icon-theme",
     "zhuangtongfa.material-theme"
   ],
-  "unwantedRecommendations": [
-    "hookyqr.beautify"
-  ]
+  "unwantedRecommendations": ["hookyqr.beautify"]
 }

@@ -7,6 +7,12 @@
     "dev": "netlify dev",
     "deploy:preview": "netlify deploy --dir . --no-build",
     "deploy:prod": "netlify deploy --prod --dir . --no-build",
+    "lint:js": "eslint .",
+    "lint:css": "stylelint \"**/*.css\"",
+    "lint:html": "htmlhint \"**/*.html\"",
+    "lint": "npm run lint:js && npm run lint:css && npm run lint:html",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "test:lighthouse": "echo \"Lighthouse runs in GitHub Actions workflow\""
   },
   "repository": {
@@ -22,6 +28,13 @@
   },
   "homepage": "https://github.com/omgitsthedm/terminal-site#readme",
   "devDependencies": {
-    "@netlify/plugin-sitemap": "^0.8.1"
+    "@eslint/js": "^10.0.1",
+    "@netlify/plugin-sitemap": "^0.8.1",
+    "eslint": "^10.0.0",
+    "globals": "^17.3.0",
+    "htmlhint": "^1.9.1",
+    "prettier": "^3.8.1",
+    "stylelint": "^17.2.0",
+    "stylelint-config-standard": "^40.0.0"
   }
 }
