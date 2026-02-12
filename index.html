@@ -3,14 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Terminal Site</title>
+    <title>Terminal Site | 3D Building</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <main class="container">
       <h1>Terminal Site</h1>
-      <p>Built with Codex from the terminal. Deployed with GitHub + Netlify.</p>
-      <a class="button" href="https://github.com/omgitsthedm" target="_blank" rel="noreferrer">GitHub</a>
+      <p>3D building generated from <code>assets/building.json</code> with Three.js.</p>
+      <div id="scene" aria-label="3D building viewer"></div>
+      <p id="scene-info" class="meta"></p>
+      <a class="button" href="https://github.com/omgitsthedm/terminal-site" target="_blank" rel="noreferrer">View Repository</a>
     </main>
+    <script type="module" src="script.js"></script>
   </body>
 </html>
