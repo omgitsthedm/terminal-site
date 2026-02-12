@@ -11,6 +11,7 @@ jobs:
     timeout-minutes: 15
 
     steps:
+      - uses: actions/checkout@v4
       - name: Run Lighthouse against production URL
         uses: treosh/lighthouse-ci-action@v12
         with:
