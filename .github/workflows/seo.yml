@@ -1,0 +1,33 @@
+name: SEO Audit
+
+on:
+  pull_request:
+  push:
+    branches: ["main"]
+
+jobs:
+  seo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Lighthouse + link checker
+        run: npm i -g lighthouse
+      - name: Run Lighthouse categories
+        run: |
+          lighthouse "https://terminal-site-omgitsthedm.netlify.app"             --quiet             --output=json             --output-path=seo-lighthouse.json             --only-categories=seo,performance,accessibility,best-practices             --chrome-flags="--headless=new --no-sandbox"
+      - name: Show score summary
+        run: |
+          node -e "const r=require('./seo-lighthouse.json');console.log({seo:r.categories.seo.score*100,perf:r.categories.performance.score*100,a11y:r.categories.accessibility.score*100,bp:r.categories['best-practices'].score*100});"
+      - name: Enforce SEO floor
+        run: |
+          node -e "const r=require('./seo-lighthouse.json');const s=r.categories.seo.score*100; if (s<90) {console.error('SEO score below threshold:',s); process.exit(1);}"
+      - name: Upload Lighthouse artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-lighthouse
+          path: seo-lighthouse.json
