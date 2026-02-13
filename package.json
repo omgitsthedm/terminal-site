@@ -2,11 +2,13 @@
   "name": "terminal-site",
   "version": "1.0.0",
   "description": "Minimal static HTML site set up for GitHub + Netlify.",
-  "main": "script.js",
+  "main": "src/main.js",
   "scripts": {
-    "dev": "netlify dev",
-    "deploy:preview": "netlify deploy --dir . --no-build",
-    "deploy:prod": "netlify deploy --prod --dir . --no-build",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy:preview": "netlify deploy --build",
+    "deploy:prod": "netlify deploy --build --prod",
     "lint:js": "eslint .",
     "lint:css": "stylelint \"**/*.css\"",
     "lint:html": "htmlhint \"**/*.html\"",
@@ -15,6 +17,8 @@
     "format:check": "prettier --check .",
     "test:visual": "playwright test",
     "test:visual:update": "playwright test --update-snapshots",
+    "model:draco": "node scripts/optimize-model.mjs",
+    "model:pipeline": "gltf-pipeline -i public/models/input.glb -o public/models/output.glb --draco.compressionLevel=10",
     "test:lighthouse": "echo \"Lighthouse runs in GitHub Actions workflow\""
   },
   "repository": {
@@ -35,12 +39,19 @@
     "@playwright/test": "^1.58.2",
     "eslint": "^10.0.0",
     "globals": "^17.3.0",
+    "gltf-pipeline": "^4.3.0",
     "htmlhint": "^1.9.1",
+    "meshoptimizer": "^1.0.1",
     "prettier": "^3.8.1",
     "stylelint": "^17.2.0",
-    "stylelint-config-standard": "^40.0.0"
+    "stylelint-config-standard": "^40.0.0",
+    "vite": "^7.3.1"
   },
   "dependencies": {
+    "gsap": "^3.14.2",
+    "lenis": "^1.3.17",
+    "lil-gui": "^0.21.0",
+    "postprocessing": "^6.38.2",
     "three": "^0.182.0"
   }
 }

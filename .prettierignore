@@ -1,5 +1,5 @@
 node_modules
 .netlify
+dist
 test-results
 playwright-report
-assets/vendor/three

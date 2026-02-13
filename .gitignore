@@ -1,6 +1,9 @@
 .DS_Store
 .netlify
 node_modules
+dist
 sitemap.xml
 test-results
 playwright-report
+public/models/input.glb
+public/models/output.draco.glb

@@ -3,12 +3,7 @@ import globals from "globals";
 
 export default [
   {
-    ignores: [
-      "node_modules/**",
-      ".netlify/**",
-      "reports/**",
-      "assets/vendor/three/**",
-    ],
+    ignores: ["node_modules/**", ".netlify/**", "reports/**", "dist/**"],
   },
   js.configs.recommended,
   {
@@ -27,6 +22,15 @@ export default [
     files: ["playwright.config.js", "tests/**/*.js"],
     languageOptions: {
       sourceType: "script",
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
+  {
+    files: ["scripts/**/*.mjs"],
+    languageOptions: {
+      sourceType: "module",
       globals: {
         ...globals.node,
       },
