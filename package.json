@@ -40,7 +40,7 @@
     "eslint": "^10.0.0",
     "globals": "^17.3.0",
     "gltf-pipeline": "^4.3.0",
-    "htmlhint": "^1.9.1",
+    "htmlhint": "^1.9.2",
     "meshoptimizer": "^1.0.1",
     "prettier": "^3.8.1",
     "stylelint": "^17.2.0",
