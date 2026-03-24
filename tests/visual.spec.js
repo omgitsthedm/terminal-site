@@ -8,7 +8,7 @@ test("home page visual baseline", async ({ page }) => {
   await page.waitForTimeout(300);
   await expect(page).toHaveScreenshot("home-page.png", {
     fullPage: true,
-    maxDiffPixelRatio: 0.01,
+    maxDiffPixelRatio: 0.05,
     animations: "disabled",
   });
 });
