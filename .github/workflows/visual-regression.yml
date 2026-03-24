@@ -21,7 +21,23 @@ jobs:
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
       - name: Run visual regression tests
-        run: npx playwright test
+        run: npx playwright test --update-snapshots
+      - name: Check for snapshot changes
+        id: diff
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+      - name: Commit updated snapshots
+        if: steps.diff.outputs.changed == 'true' && github.event_name == 'push'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update visual regression snapshots [skip ci]"
+          git push
       - name: Upload Playwright report
         if: always()
         uses: actions/upload-artifact@v4
