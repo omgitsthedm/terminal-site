@@ -27,7 +27,7 @@ body {
 #app {
   width: min(1200px, 94vw);
   margin: 0 auto;
-  padding: 1rem 0 8rem;
+  padding: max(1rem, env(safe-area-inset-top)) 0 calc(8rem + env(safe-area-inset-bottom));
 }
 
 .site-header {
@@ -157,5 +157,37 @@ h2 {
 
   .split {
     min-height: 35vh;
+  }
+}
+
+
+@media (width <= 640px) {
+  #app {
+    width: 100%;
+    padding-inline: 0.6rem;
+  }
+
+  .site-header {
+    top: 0.5rem;
+    padding: 0.7rem 0.8rem;
+    border-radius: 14px;
+  }
+
+  .hero {
+    padding: 0.8rem;
+    gap: 1rem;
+  }
+
+  .hero-copy {
+    padding: 0.4rem;
+  }
+
+  #scene {
+    min-height: 48vh;
+    max-height: 60vh;
+  }
+
+  .split {
+    padding: 1.2rem;
   }
 }
