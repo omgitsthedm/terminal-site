@@ -1,6 +1,4 @@
 
-!.env.example
-!.env.sample
 # --- dependencies / build output ---
 # --- local cruft ---
 # --- secrets (NEVER commit) ---
@@ -11,6 +9,8 @@
 .cache/
 .env
 .env.*
+!.env.example
+!.env.sample
 .netlify
 .netlify/
 .next/
